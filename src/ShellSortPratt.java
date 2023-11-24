@@ -17,7 +17,7 @@ public class ShellSortPratt extends Sort {
                 int temp = data[i];
                 int j = i;
 
-                if(j >= gap && data[j - gap] > temp) {
+                if (data[j - gap] > temp) {
                     while (j >= gap && data[j - gap] > temp) {
                         data[j] = data[j - gap];
                         j -= gap;
@@ -37,7 +37,7 @@ public class ShellSortPratt extends Sort {
             for (int j = 0; j < data.length / 2 + 1; j++) {
                 number = (int) ((int) Math.pow(2, i) * Math.pow(3, j));
 
-                if(number >= data.length) continue;
+                if (number >= data.length) continue;
 
                 pratt.add(number);
             }
