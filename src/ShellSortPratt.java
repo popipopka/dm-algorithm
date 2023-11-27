@@ -17,13 +17,15 @@ public class ShellSortPratt extends Sort {
                 int temp = data[i];
                 int j = i;
 
-                if (data[j - gap] > temp) {
-                    while (j >= gap && data[j - gap] > temp) {
-                        data[j] = data[j - gap];
-                        j -= gap;
-                        comparingCount++;
-                    }
-                } else comparingCount++;
+                boolean flag = true;
+                while (j >= gap && data[j - gap] > temp) {
+                    flag = false;
+                    data[j] = data[j - gap];
+                    j -= gap;
+                    comparingCount++;
+                }
+
+                if(flag) comparingCount++;
 
                 data[j] = temp;
             }
