@@ -50,7 +50,6 @@ public class QuickSort extends Sort{
             }
             comparingCount++;
 
-
             swap(i, j);
         }
         swap(i, j);

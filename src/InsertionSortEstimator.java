@@ -5,15 +5,19 @@ public class InsertionSortEstimator extends Sort {
 
     @Override
     void run() {
-        int comparisons = 0;
         for (int i = 1; i < data.length; i++) {
             int key = data[i];
             int j = i - 1;
             while (j >= 0 && data[j] > key) {
-                comparisons++;
+                comparingCount++;
                 data[j + 1] = data[j];
                 j--;
+                if (j >= 0) {
+                    comparingCount--;
+                    break;
+                }
             }
+            comparingCount++;
             data[j + 1] = key;
         }
     }
