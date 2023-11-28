@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class ShellSortPratt extends Sort {
 
     protected ShellSortPratt(int[] data) {
         super(data);
-        fillPratt();
+        //fillPratt();
     }
 
     @Override
@@ -17,22 +18,30 @@ public class ShellSortPratt extends Sort {
                 int temp = data[i];
                 int j = i;
 
-                boolean flag = true;
+                //boolean flag = true;
                 while (j >= gap && data[j - gap] > temp) {
-                    flag = false;
+                    //flag = false;
                     data[j] = data[j - gap];
                     j -= gap;
                     comparingCount++;
+                    System.out.println(Arrays.toString(data));
+                    System.out.println(comparingCount);
+                    if (j < gap) {
+                        comparingCount--;
+                        break;
+                    }
                 }
-
-                if(flag) comparingCount++;
+                comparingCount++;
+                //if(flag) comparingCount++;
 
                 data[j] = temp;
+                System.out.println(Arrays.toString(data));
+                System.out.println(comparingCount);
             }
         }
     }
 
-    private void fillPratt() {
+    public void fillPratt() {
         int number;
 
         for (int i = 0; i < data.length / 2 + 1; i++) {
@@ -45,6 +54,16 @@ public class ShellSortPratt extends Sort {
             }
         }
 
+        pratt.sort(Collections.reverseOrder());
+    }
+
+    public void fillLog() {
+        int number = 1;
+
+        for (int i = 0; i < Math.log(data.length) / Math.log(2); i++) {
+            pratt.add(number);
+            number = 2 * number + 1;
+        }
         pratt.sort(Collections.reverseOrder());
     }
 }
