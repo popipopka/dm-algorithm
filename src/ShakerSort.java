@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ShakerSort {
     public static final String SWAP_COLOR = "\u001B[32m";
     public static final String ANSI_RESET = "\u001B[0m";
@@ -27,28 +29,50 @@ public class ShakerSort {
         int temp;
         printArray(arr);
         while (left < right) {
+            boolean isChanged = false;
             for (int i = left; i < right; i++) {
                 if (arr[i] > arr[i + 1]) {
+                    isChanged = true;
+                    comparisons++;
                     temp = arr[i];
                     arr[i] = arr[i + 1];
                     arr[i + 1] = temp;
-                    printArray(arr, i, i + 1);
+                    System.out.println(Arrays.toString(arr));
+                    System.out.println(comparisons);
+                    //printArray(arr, i, i + 1);
+                } else {
+                    comparisons++;
+                    //System.out.println(Arrays.toString(arr));
+                    System.out.println(comparisons);
                 }
             }
-            comparisons += right - left;
+            if (!isChanged) {
+                break;
+            }
+            isChanged = false;
             right--;
             for (int i = right; i > left; i--) {
                 if (arr[i - 1] > arr[i]) {
+                    isChanged = true;
+                    comparisons++;
                     temp = arr[i];
                     arr[i] = arr[i - 1];
                     arr[i - 1] = temp;
-                    printArray(arr, i - 1, i);
+                    System.out.println(Arrays.toString(arr));
+                    System.out.println(comparisons);
+                    //printArray(arr, i - 1, i);
+                } else {
+                    comparisons++;
+                    //System.out.println(Arrays.toString(arr));
+                    System.out.println(comparisons);
                 }
             }
-            comparisons += right - left;
+            if (!isChanged) {
+                break;
+            }
             left++;
         }
-        printArray(arr);
+        //printArray(arr);
         return comparisons;
     }
 }
