@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class InsertionSortEstimator extends Sort {
     protected InsertionSortEstimator(int[] data) {
         super(data);
@@ -12,13 +14,19 @@ public class InsertionSortEstimator extends Sort {
                 comparingCount++;
                 data[j + 1] = data[j];
                 j--;
-                if (j >= 0) {
+
+                System.out.println(Arrays.toString(data));
+                System.out.println(comparingCount);
+                if (j < 0) {
                     comparingCount--;
                     break;
                 }
             }
+
             comparingCount++;
             data[j + 1] = key;
+            System.out.println(Arrays.toString(data));
+            System.out.println(comparingCount);
         }
     }
 }
