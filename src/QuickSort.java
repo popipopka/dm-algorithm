@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class QuickSort extends Sort{
 
     protected QuickSort(int[] data) {
@@ -33,6 +35,8 @@ public class QuickSort extends Sort{
             while (j >= leftBorder && data[j] >= pivot) {
                 j--;
                 comparingCount++;
+                System.out.println(Arrays.toString(data));
+                System.out.println(comparingCount);
                 if (i >= j) {
                     comparingCount--;
                     break;
@@ -43,6 +47,8 @@ public class QuickSort extends Sort{
             while (i <= rightBorder && data[i] <= pivot) {
                 i++;
                 comparingCount++;
+                System.out.println(Arrays.toString(data));
+                System.out.println(comparingCount);
                 if (i >= j) {
                     comparingCount--;
                     break;
